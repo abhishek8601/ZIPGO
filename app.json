@@ -1,0 +1,80 @@
+{
+  "expo": {
+    "name": "ZIPGO",
+    "slug": "ZIPGO",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./src/assets/images/zipgo-logo.png",
+    "scheme": "zipgo",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    
+
+    "splash": {
+      "image": "./src/assets/images/zipgo-logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff",
+      "dark": {
+        "backgroundColor": "#000000"
+      }
+    },
+
+
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./src/assets/images/android-icon-foreground.png",
+        "backgroundImage": "./src/assets/images/android-icon-background.png",
+        "monochromeImage": "./src/assets/images/android-icon-monochrome.png"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "package": "com.anonymous.ZIPGO"
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./src/assets/images/zipgo-logo.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./src/assets/images/zipgo-logo.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff",
+          "dark": {
+            "backgroundColor": "#000000"
+          }
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 35,
+            "targetSdkVersion": 35,
+            "buildProperties": {
+              "usesCleartextTraffic": true,
+              "permissions": ["INTERNET"]
+            }
+          }
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "fc35a7bb-89da-4337-b69f-23d3a881fe50"
+      }
+    }
+  }
+}
