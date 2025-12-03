@@ -78,11 +78,12 @@ const TabsRoot = () => {
       <Tabs.Screen name="(list)/parents" options={{ href: null }} />
       <Tabs.Screen name="(list)/emergency" options={{ href: null }} />
       <Tabs.Screen name="(list)/studentslist" options={{ href: null }} />
+      <Tabs.Screen name="(list)/allPeopleList" options={{ href: null }} />
 
       <Tabs.Screen name="profiles/UserProfileScreen" options={{ href: null }} />
       <Tabs.Screen name="profiles/coordinatorProfile" options={{ href: null }} />
       <Tabs.Screen name="profiles/teacherProfile" options={{ href: null }} />
-      <Tabs.Screen name="profiles/allPeopleList" options={{ href: null }} />
+      {/* <Tabs.Screen name="profiles/allPeopleList" options={{ href: null }} /> */}
       <Tabs.Screen name="profiles/parentsProfile" options={{ href: null }} />
       <Tabs.Screen name="profiles/ProfileEditScreen" options={{ href: null }} />
       <Tabs.Screen name="profiles/StudentProfileScreen" options={{ href: null }} />

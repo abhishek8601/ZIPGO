@@ -68,7 +68,7 @@ export default function ParentsList() {
           mobile: p.phone,
           qualification: p.qualification,
           relation: p.relation || '',
-          imageUrl: p.imageUrl || 'https://i.pravatar.cc/150?img=3',
+          imageUrl: p.imageUrl || 'https://i.pravatar.cc/150?img=8',
         }));
 
         setParents(parentList);

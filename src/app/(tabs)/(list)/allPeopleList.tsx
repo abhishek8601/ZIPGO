@@ -70,7 +70,7 @@ export default function AllPeopleList() {
           mobile: p.mobile || p.phone,
           qualification: p.qualification,
           relation: p.relation,
-          imageUrl: p.imageUrl || 'https://i.pravatar.cc/150?img=3',
+          imageUrl: p.imageUrl || 'https://i.pravatar.cc/150?img=13',
         }));
 
         setPeople(list);

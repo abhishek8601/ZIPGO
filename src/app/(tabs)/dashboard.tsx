@@ -188,7 +188,7 @@ export default function Dashboard() {
             {/* Navigate to People List */}
             <Text
               onPress={() => router.push({
-                pathname: '/profiles/allPeopleList',  // New screen
+                pathname: '/(list)/allPeopleList',  // New screen
                 params: { image: selectedImage || null }
               })}
               className="text-white text-xs font-normal ml-2"

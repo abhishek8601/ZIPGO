@@ -16,6 +16,7 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
+import { useUser } from '@/context/UserContext';
 
 interface UserProfile {
   name: string;
@@ -29,6 +30,7 @@ export default function ProfileEditScreen() {
   const router = useRouter();
   const params = useLocalSearchParams();
   const API_URL = Constants.expoConfig.extra.apiUrl;
+  const { setUser } = useUser();
 
   const existingData = params.userData ? JSON.parse(params.userData as string) : null;
 
@@ -50,7 +52,7 @@ export default function ProfileEditScreen() {
         setLoading(false);
         return;
       }
-
+ 
       try {
         const token = await AsyncStorage.getItem('token');
         if (!token) throw new Error('No token found.');
@@ -71,9 +73,15 @@ export default function ProfileEditScreen() {
     fetchProfile();
   }, []);
 
+  // const handleLogout = async () => {
+  //   await AsyncStorage.removeItem('token');
+  //   router.replace('/screens/LoginScreen');
+  // };
+
   const handleLogout = async () => {
-    await AsyncStorage.removeItem('token');
-    router.replace('/screens/LoginScreen');
+    await AsyncStorage.removeItem('user'); // remove token
+    setUser(null);                           // clear user context
+    router.replace('/screens/LoginScreen');  // navigate to login
   };
 
   const pickImage = async () => {
