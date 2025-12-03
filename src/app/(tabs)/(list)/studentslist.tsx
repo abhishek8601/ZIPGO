@@ -87,7 +87,7 @@ export default function StudentsList() {
         <TouchableOpacity
           onPress={() => {
             if (router.canGoBack()) router.back();
-            else router.push('/dashboard');
+            else router.push('/notification');
           }}
         >
           <Ionicons name="arrow-back" size={24} color="#000" />

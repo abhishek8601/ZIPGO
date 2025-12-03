@@ -55,7 +55,7 @@ export default function LocationPermissionScreen() {
       const { status, canAskAgain } = await Location.requestForegroundPermissionsAsync();
 
       if (status === 'granted') {
-        router.replace('./src/screens/LoginScreen');
+        router.replace('./LoginScreen');
       } else {
         if (canAskAgain) {
           Alert.alert(

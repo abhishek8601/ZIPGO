@@ -24,6 +24,7 @@ interface Person {
   mobile?: string;
   qualification?: string;
   imageUrl?: string;
+  subject?: string;
 }
 
 export default function AllPeopleList() {
@@ -71,6 +72,7 @@ export default function AllPeopleList() {
           qualification: p.qualification,
           relation: p.relation,
           imageUrl: p.imageUrl || 'https://i.pravatar.cc/150?img=13',
+          subject: p.subject,
         }));
 
         setPeople(list);
@@ -220,6 +222,11 @@ export default function AllPeopleList() {
                   {item.qualification && (
                     <Text className="text-black text-[10px] mt-1">
                       Education: {item.qualification}
+                    </Text>
+                  )}
+                   {item.subject && (
+                    <Text className="text-black text-[10px] mt-1">
+                      Subject: {item.subject}
                     </Text>
                   )}
                 </View>
