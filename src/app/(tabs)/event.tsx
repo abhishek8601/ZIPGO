@@ -17,21 +17,6 @@ import Colors from '@/constants/colors';
 import { router } from 'expo-router';
 import Constants from 'expo-constants';
 
-// Event data
-// const events = [
-
-  
-  
-//   {
-//     id: '10',
-//     date: '2026-10-31',
-//     title: 'Halloween Party',
-//     description: 'Get your costumes ready for a spooky night!',
-//     image: require('@/assets/images/christmas.png'),
-//     deletable: true,
-//   },
-// ];
-
 interface Event {
   image: ImageSourcePropType;
   description: ReactNode;
