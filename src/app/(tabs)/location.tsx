@@ -2,6 +2,7 @@ import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { useUser } from '../../context/UserContext';
+
 import {
   FlatList,
   Image,
@@ -14,6 +15,9 @@ import {
 } from 'react-native';
 import Colors from '@/constants/colors';
 import Header from '@/components/PrimaryHeader';
+
+// ❌ Removed react-native-maps import
+// import MapView, { Marker } from 'react-native-maps';
 
 const kids = [
   {
@@ -40,6 +44,14 @@ export default function LiveTracker() {
   const [isLive, setIsLive] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const { user } = useUser();
+
+  // Load react-native-maps ONLY on mobile
+  let MapView: any, Marker: any;
+  if (Platform.OS !== 'web') {
+    const Maps = require('react-native-maps');
+    MapView = Maps.default;
+    Marker = Maps.Marker;
+  }
 
   const toggleLive = () => setIsLive((prev) => !prev);
   const handlePrev = () =>
@@ -81,20 +93,32 @@ export default function LiveTracker() {
       {/* Map Section */}
       <View className="bg-white border-b-4 border-[#042945] w-full">
         {Platform.OS === 'web' ? (
-          <div style={{ width: '80%', height: 300 }}>
+          <div style={{ width: '100%', height: 300 }}>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.009974397597!2d77.37672378048914!3d28.62075529253369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce56a33b4ae11%3A0x469d5f902777b62e!2sYour%20Location!5e0!3m2!1sen!2sin!4v1699900000000!5m2!1sen!2sin"
-              width="150%"
-              height="280"
+              width="100%"
+              height="300"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
             />
           </div>
         ) : (
-          <Text className="text-base text-black text-center">
-            Map embedding only works on web.
-          </Text>
+          <MapView
+            style={{ width: '100%', height: 300 }}
+            initialRegion={{
+              latitude: 28.620755,
+              longitude: 77.376724,
+              latitudeDelta: 0.01,
+              longitudeDelta: 0.01,
+            }}
+          >
+            <Marker
+              coordinate={{ latitude: 28.620755, longitude: 77.376724 }}
+              title="Your Location"
+              description="Live tracking location"
+            />
+          </MapView>
         )}
       </View>
 
@@ -154,7 +178,11 @@ export default function LiveTracker() {
             </View>
 
             <TouchableOpacity onPress={handleNext}>
-              <MaterialIcons name="arrow-forward-ios" size={30} color="#F4A300" />
+              <MaterialIcons
+                name="arrow-forward-ios"
+                size={30}
+                color="#F4A300"
+              />
             </TouchableOpacity>
           </View>
 
